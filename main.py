@@ -44,7 +44,7 @@ if __name__ == '__main__':
             print('[4] Remove book')
             print('[9] Exit')
 
-            choice = input('Select: \n')
+            choice = input('Select: ')
 
             print(switch(choice))
 
