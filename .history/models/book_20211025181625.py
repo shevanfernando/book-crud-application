@@ -60,7 +60,7 @@ class Book:
                 data = input("Enter title : ")
                 self.cursor.execute(edit_qry, (data,))
                 self.db.commit()
-                print("Update successfully!")
+                print("**********\nUpdate successfully!\n**********")
             elif column == "2":
                 edit_qry = f"UPDATE book SET author_name = %s WHERE isbn = {isbn_no}"
                 data = input("Enter title : ")

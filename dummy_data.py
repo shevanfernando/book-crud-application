@@ -12,7 +12,7 @@ class DummyData:
 
         # create book table
         self.cursor.execute(
-            'CREATE TABLE IF NOT EXISTS book (isbn int AUTO_INCREMENT PRIMARY KEY,title VARCHAR(256), author_name VARCHAR(256))')
+            'CREATE TABLE IF NOT EXISTS book (isbn int PRIMARY KEY,title VARCHAR(256), author_name VARCHAR(256))')
 
     def insert_dummy_data(self):
         # user table dummy data insert
@@ -28,12 +28,12 @@ class DummyData:
         # book table dummy data insert
         self.cursor.execute('SELECT * FROM book')
         if len(self.cursor.fetchall()) == 0:
-            qry = "INSERT INTO book(title, author_name) VALUES(%s, %s)"
-            data = [('ABSALOM, ABSALOM!', 'WILLIAM FAULKNER'),
-                    ('A TIME TO KILL', 'JOHN GRISHAM'),
-                    ('THE HOUSE OF MIRTH', 'EDITH WHARTON'),
-                    ('EAST OF EDEN', 'JOHN STEINBECK'),
-                    ('THE SUN ALSO RISES', 'ERNEST HEMINGWAY'), ]
+            qry = "INSERT INTO book(isbn, title, author_name) VALUES(%s, %s, %s)"
+            data = [(123, 'ABSALOM, ABSALOM!', 'WILLIAM FAULKNER'),
+                    (456, 'A TIME TO KILL', 'JOHN GRISHAM'),
+                    (147, 'THE HOUSE OF MIRTH', 'EDITH WHARTON'),
+                    (852, 'EAST OF EDEN', 'JOHN STEINBECK'),
+                    (963, 'THE SUN ALSO RISES', 'ERNEST HEMINGWAY'), ]
 
             self.cursor.executemany(qry, data)
 

@@ -49,8 +49,7 @@ class Book:
         self.cursor.execute(is_isbn, data)
         result = self.cursor.fetchone()
         if (result):
-            df = pd.Series(result, index=["ISBN", "TITLE", "AUTHOR"])
-            print(df)
+            df = pd.DataFrame(result, columns=['ISBN', 'TITLE', 'AUTHOR'])
             print("Enter column index to edit data")
             print("[1] TITLE")
             print("[2] AUTHOR")
@@ -58,13 +57,13 @@ class Book:
             if column == "1":
                 edit_qry = f"UPDATE book SET title = %s WHERE isbn = {isbn_no}"
                 data = input("Enter title : ")
-                self.cursor.execute(edit_qry, (data,))
+                self.cursor.execute(edit_qry, data)
                 self.db.commit()
                 print("Update successfully!")
             elif column == "2":
-                edit_qry = f"UPDATE book SET author_name = %s WHERE isbn = {isbn_no}"
+                edit_qry = f"UPDATE book SET author = %s WHERE isbn = {isbn_no}"
                 data = input("Enter title : ")
-                self.cursor.execute(edit_qry, (data, ))
+                self.cursor.execute(edit_qry, data)
                 self.db.commit()
                 print("Update successfully!")
             else:

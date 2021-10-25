@@ -58,13 +58,13 @@ class Book:
             if column == "1":
                 edit_qry = f"UPDATE book SET title = %s WHERE isbn = {isbn_no}"
                 data = input("Enter title : ")
-                self.cursor.execute(edit_qry, (data,))
+                self.cursor.execute(edit_qry, data)
                 self.db.commit()
                 print("Update successfully!")
             elif column == "2":
-                edit_qry = f"UPDATE book SET author_name = %s WHERE isbn = {isbn_no}"
+                edit_qry = f"UPDATE book SET author = %s WHERE isbn = {isbn_no}"
                 data = input("Enter title : ")
-                self.cursor.execute(edit_qry, (data, ))
+                self.cursor.execute(edit_qry, data)
                 self.db.commit()
                 print("Update successfully!")
             else:
