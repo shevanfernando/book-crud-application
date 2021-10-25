@@ -11,15 +11,15 @@ def quite() -> None:
         exit()
 
 
-# def switch(choice: str):
-#     switcher = {
-#         '1': book.add_book(),
-#         '2': book.list_of_all_books(),
-#         '3': book.edit_book(),
-#         '4': book.remove_book(),
-#         '9': quite(),
-#     }
-#     return switcher.get(choice, 'Invalid choice...')
+def switch(choice: str):
+    switcher = {
+        '1': book.add_book(),
+        '2': book.list_of_all_books(),
+        '3': book.edit_book(),
+        '4': book.remove_book(),
+        '9': quite(),
+    }
+    return switcher.get(choice, 'Invalid choice...')
 
 
 if __name__ == '__main__':
@@ -46,19 +46,7 @@ if __name__ == '__main__':
 
             choice = input('Select: ')
 
-            # print(switch(choice))
-            if choice == "1":
-                book.add_book()
-            elif choice == "2":
-                book.list_of_all_books()
-            elif choice == "3":
-                book.edit_book()
-            elif choice == "4":
-                book.remove_book()
-            elif choice == "9":
-                quit()
-            else:
-                print("Invalid input")
+            print(switch(choice))
 
         # commit changes
         db.commit()
