@@ -11,17 +11,6 @@ def quite() -> None:
         exit()
 
 
-# def switch(choice: str):
-#     switcher = {
-#         '1': book.add_book(),
-#         '2': book.list_of_all_books(),
-#         '3': book.edit_book(),
-#         '4': book.remove_book(),
-#         '9': quite(),
-#     }
-#     return switcher.get(choice, 'Invalid choice...')
-
-
 if __name__ == '__main__':
     name = "Book-CRUD"
     print(f'{name} Application Start...')
@@ -46,7 +35,6 @@ if __name__ == '__main__':
 
             choice = input('Select: ')
 
-            # print(switch(choice))
             if choice == "1":
                 book.add_book()
             elif choice == "2":

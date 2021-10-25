@@ -7,7 +7,6 @@ class Book:
         self.cursor = db.cursor(buffered=True)
 
     def add_book(self) -> None:
-        # TODO: complete add book method
         # return the status of book added or not
         status = ""
         print("Enter below details to add books.")
@@ -33,7 +32,6 @@ class Book:
         print(status)
 
     def list_of_all_books(self) -> None:
-        # TODO: complete list books method
         list_qry = "select * from book"
         self.cursor.execute(list_qry)
         list_result = self.cursor.fetchall()
