@@ -1,4 +1,3 @@
-
 class Book:
     def __init__(self, db) -> None:
         self.db = db
@@ -17,9 +16,21 @@ class Book:
         pass
 
     def remove_book(self) -> None:
-       # TODO: complete remove book method
-        pass
+        id = input('Book isbn: \n')
 
-    def __get_book_by_id(self) -> None:
-        # TODO: complete get book method
-        pass
+        qry = 'DELETE FROM book WHERE isbn = %s'
+
+        cd = self.cursor.execute(qry, (id,))
+
+        self.db.commit()
+
+        print(f'Book with isdn : {id} delete { cd == None and "failed"}')
+
+    def __get_book_by_id(self) -> any:
+        id = input('Book isdn: \n')
+
+        qry = 'SELECT isbn, title, author_name FROM book WHERE isbn = %s'
+
+        self.cursor.execute(qry, (id,))
+
+        return self.cursor.fetchone()

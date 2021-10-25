@@ -5,8 +5,10 @@ from models.book import Book
 
 
 def quite() -> None:
-    print('Quitting...'),
-    exit()
+    choice = input('Do you want to exit? [y/n] \n').upper() == 'Y'
+    if choice:
+        print('Quitting...'),
+        exit()
 
 
 def switch(choice: str):
@@ -35,7 +37,7 @@ if __name__ == '__main__':
 
         book = Book(db)
 
-        while(True):
+        while (True):
             print('[1] Add new book')
             print('[2] List all books')
             print('[3] Edit book')

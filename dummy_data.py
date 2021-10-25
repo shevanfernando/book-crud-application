@@ -12,7 +12,7 @@ class DummyData:
 
         # create book table
         self.cursor.execute(
-            'CREATE TABLE IF NOT EXISTS book (isdn int AUTO INCREMENT PRIMARY KEY,title VARCHAR(256), author_name VARCHAR(256))')
+            'CREATE TABLE IF NOT EXISTS book (isbn int AUTO_INCREMENT PRIMARY KEY,title VARCHAR(256), author_name VARCHAR(256))')
 
     def insert_dummy_data(self):
         # user table dummy data insert
