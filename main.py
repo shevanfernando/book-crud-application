@@ -1,8 +1,26 @@
-from logging import log
 from DbAdapter import db
 from dummy_data import DummyData
 from models.login import Login
 from models.book import Book
+
+
+def quite() -> None:
+    choice = input('Do you want to exit? [y/n] \n').upper() == 'Y'
+    if choice:
+        print('Quitting...'),
+        exit()
+
+
+def switch(choice: str):
+    switcher = {
+        '1': book.add_book(),
+        '2': book.list_of_all_books(),
+        '3': book.edit_book(),
+        '4': book.remove_book(),
+        '9': quite(),
+    }
+    return switcher.get(choice, 'Invalid choice...')
+
 
 if __name__ == '__main__':
     name = "Book-CRUD"
@@ -19,7 +37,7 @@ if __name__ == '__main__':
 
         book = Book(db)
 
-        while(True):
+        while (True):
             print('[1] Add new book')
             print('[2] List all books')
             print('[3] Edit book')
@@ -27,19 +45,8 @@ if __name__ == '__main__':
             print('[9] Exit')
 
             choice = input('Select: \n')
-            switch = {
-                1: book.add_book(),
-                2: book.list_of_all_books(),
-                3: book.edit_book(),
-                4: book.remove_book(),
-                9: {
-                    print('Quitting...'),
-                    exit()}
-            }
 
-            switch.get(choice)
-
-            # TODO: implemnt default case
+            print(switch(choice))
 
         # commit changes
         db.commit()
